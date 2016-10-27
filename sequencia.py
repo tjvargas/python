@@ -4,8 +4,8 @@
 
 class Sequencia():
 
-    def __init__(self):
-        self.string = "gloooooobbbbbo.commmmm.br" #deve imprimir oooooo
+    def __init__(self, string):
+        self.string = string
         ## var auxiliar
         self.aux_char_anterior = ''
         ## lista auxiliar das sequencias
@@ -44,6 +44,6 @@ class Sequencia():
         # imprime a maior sequencia de caracteres. Empates imprimem a primeira da esquerda para a direita
         print(self.sequencias[self.maior_item_da_lista(self.sequencias)]);
 
-sequencia = Sequencia()
+sequencia = Sequencia("gloooooobbbbbo.commmmm.br")  #deve imprimir oooooo
 
 sequencia.run()
