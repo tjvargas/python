@@ -1,3 +1,7 @@
+import multiprocessing as mp
+import time
+
+
 def sequence_collatz(x):
     seq = [x]
     if x < 1:
@@ -18,7 +22,7 @@ def lista_entradas():
         lista_entradas.append(++i);
     return lista_entradas
 
-# retorna a posição do maior item da lista
+# retorna a posiï¿½ï¿½o do maior item da lista
 def maior_item_da_lista(seq):
     maior = 0
     i = 0
@@ -28,8 +32,6 @@ def maior_item_da_lista(seq):
         i = i + 1
     return maior;
 
-import multiprocessing as mp
-import time
 
 if __name__ == '__main__':
     start = time.clock()
