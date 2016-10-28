@@ -13,11 +13,10 @@ class Sequencia():
 
     # Adiciona caracteres na lista auxiliar, se repetir concatena
     def add_sequencia(self, x):
-        ultima_posicao = len(self.sequencias)-1;
-        ultima_sequencia = self.sequencias[ultima_posicao];
+        ultima_sequencia = self.sequencias[-1];
         ultimo_char = ultima_sequencia[len(ultima_sequencia)-1];
         if ultimo_char == x :
-            self.sequencias[ultima_posicao] = ultima_sequencia + x;
+            self.sequencias[-1] = ultima_sequencia + x;
 
     # retorna a posição do maior item da lista
     def maior_item_da_lista(self, seq):
@@ -44,6 +43,6 @@ class Sequencia():
         # imprime a maior sequencia de caracteres. Empates imprimem a primeira da esquerda para a direita
         print(self.sequencias[self.maior_item_da_lista(self.sequencias)]);
 
-sequencia = Sequencia("gloooooobbbbbo.commmmm.br")  #deve imprimir oooooo
+sequencia = Sequencia("gloooooobbbbbo.commmmmm.br")  #deve imprimir oooooo
 
 sequencia.run()
