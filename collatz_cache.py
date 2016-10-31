@@ -1,52 +1,46 @@
 ## Algoritmo para descobrir o número que gera a maior sequência pela conjectura de collatz
 import time
 
-#Interceptor para guardar resultados já obtidos em cache
-def cache(f):
-    def func(args):
-        if args not in func.cache:
-            func.cache[args] = f(args)
-        return func.cache[args]
-    func.cache = {}
-    return func
-
-
-@cache
-def sequence_collatz(x):
-    if x == 1:
-        seq = []
-    elif x % 2 == 0:
-        seq = sequence_collatz(x / 2)
-    else:
-        seq = sequence_collatz(3 * x + 1)
-    return [x] + seq
+#Diferentemente do cache anterior, agora só guarda a quantidade de passos para cada número
+def sequence_collatz(x, tab={}):
+    steps = 0
+    y = x
+    if x < 1:
+       return 0
+    while x > 1:
+       if x in tab:
+         steps += tab[x]
+         tab[y] = steps
+         return steps
+       if x % 2 == 0:
+         x = x / 2
+       else:
+         x = 3 * x + 1
+       steps += 1
+    tab[y] = steps
+    return steps
 
 
 def lista_entradas():
-    lista_entradas = [];
-    for i in range(1000000):
-        if i%2!=0: #O maior número é sempre impar
-            lista_entradas.append(++i);
-    return lista_entradas
+    return list(range(1,1000000,2)) #O maior número é sempre impar
 
 
 # retorna a posição do maior item da lista
-def maior_item_da_lista(seq):
-    maior = 0
-    i = 0
-    while i < len(seq):
-        if len(seq[i]) > len(seq[maior]):
-            maior = i
-        i = i + 1
-    return seq[maior][0];
+def maior_item_da_lista(tab):
+  maior = 0
+  maiork= 0
+  for k,val in tab.items():
+    if val > maior:
+      maior = val
+      maiork = k
+  return maiork,maior
 
 
-#if __name__ == '__main__':
 start = time.clock()
 lista = lista_entradas()
-sequencia = [];
+tab = {};
 for i in lista:
-    sequencia.append(sequence_collatz(i))
-print(maior_item_da_lista(sequencia))
+    (sequence_collatz(i,tab))
+print(maior_item_da_lista(tab))
 print(time.clock() - start)
 
