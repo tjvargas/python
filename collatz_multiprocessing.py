@@ -1,3 +1,4 @@
+## Algoritmo para descobrir o número que gera a maior sequência pela conjectura de collatz
 import multiprocessing as mp
 import time
 

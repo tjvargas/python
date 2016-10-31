@@ -1,5 +1,7 @@
+## Algoritmo para descobrir o número que gera a maior sequência pela conjectura de collatz
 import time
 
+#Interceptor para guardar resultados já obtidos em cache
 def cache(f):
     def func(args):
         if args not in func.cache:
@@ -43,7 +45,7 @@ def maior_item_da_lista(seq):
 start = time.clock()
 lista = lista_entradas()
 sequencia = [];
-for i in lista :
+for i in lista:
     sequencia.append(sequence_collatz(i))
 print(maior_item_da_lista(sequencia))
 print(time.clock() - start)
