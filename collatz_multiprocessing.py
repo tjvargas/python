@@ -15,14 +15,14 @@ def sequence_collatz(x):
     return seq
 
 
-
 def lista_entradas():
     lista_entradas = [];
     for i in range(1000000):
-        lista_entradas.append(++i);
+        if i%2!=0: #O maior número é sempre impar
+            lista_entradas.append(++i);
     return lista_entradas
 
-# retorna a posi��o do maior item da lista
+# retorna a posição do maior item da lista
 def maior_item_da_lista(seq):
     maior = 0
     i = 0
@@ -30,7 +30,7 @@ def maior_item_da_lista(seq):
         if len(seq[i]) > len(seq[maior]):
             maior = i
         i = i + 1
-    return maior;
+    return seq[maior][0];
 
 
 if __name__ == '__main__':
